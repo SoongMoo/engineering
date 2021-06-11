@@ -45,6 +45,7 @@ select nvl(max(emp_no),10000)+1 from employees
 <select id="empAllList" resultType="emp">
 	select <include refid="selectColumn" />
 	from employees
+	order by emp_no
 </select>
 
 
