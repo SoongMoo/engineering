@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import command.MemberCommand;
+import service.member.MemberInfoService;
 import service.member.MemberJoinService;
 import service.member.MemberListService;
 
@@ -17,6 +19,8 @@ public class MemberController {
 	MemberJoinService memberJoinService;
 	@Autowired
 	MemberListService memberListService;
+	@Autowired
+	MemberInfoService memberInfoService;
 	@RequestMapping("agree")
 	public String agree() {
 		return "member/agree";
@@ -36,7 +40,12 @@ public class MemberController {
 		memberListService.memList(model);
 		return "member/memberList";
 	}
-	
+	@RequestMapping("memInfo")
+	public String memInfo(@RequestParam(value = "memId") String memId,
+			Model model) {
+		memberInfoService.memInfo(memId,model);
+		return "member/memberInfo";
+	}
 }
 
 
