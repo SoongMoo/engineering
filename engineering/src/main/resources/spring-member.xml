@@ -17,7 +17,10 @@
 						class="service.member.MemberModifyService" />	
 	<bean id="memberDeleteService"
 						class="service.member.MemberDeleteService" />
-	<bean id="memberDetailService	"
+	<bean id="memberDetailService"
 						class="service.member.MemberDetailService" />					
+	<bean id="memberUpdateService"
+						class="service.member.MemberUpdateService" />		
 			
+	
 </beans>

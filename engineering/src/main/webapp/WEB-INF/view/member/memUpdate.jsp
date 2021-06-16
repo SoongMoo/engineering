@@ -61,6 +61,11 @@
 	<table border="1" align="center">
 		<tr><td>아이디</td>
 			<td>${dto.membId }</td></tr>
+		<tr><td>비밀번호</td>
+			<td><input type="password" name="membPw" >
+			<span>${pwFail1 }</span>
+			</td>
+		</tr>
 		<tr><td>이름</td>
 			<td>${dto.membName }</td></tr>
 		<tr><td>우편번호</td>
