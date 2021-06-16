@@ -103,8 +103,6 @@
 				<input type="submit" value="회원 수정" />
 				<input type="button" value="수정 안함" 
 					onclick="javascript:history.back();" /> 
-				<input type="button" value="강퇴" 
-					onclick="javascript:location.href='memDel?memId=${dto.membId }'" />
 			</td></tr>
 	</table>
 </form>
