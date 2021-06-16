@@ -150,6 +150,7 @@ public class MemberController {
 		if(bcryptPasswordEncoder.matches(membPw, pw)) {
 			if(newPw.equals(newPwCon)) {
 				System.out.println(1);
+				newPw = bcryptPasswordEncoder.encode(newPw);
 				memberPwChangeService.pwOk(userId, newPw);
 				return "redirect:/";
 			}else {
