@@ -1,15 +1,20 @@
-package model;
+package command;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class ProductDTO {
+public class ProductCommand {
 	String prodNo;
 	String catNum;
 	String prodName;
 	String prodPrice;
 	String prodInfo;
-	String prodImage;
-	String empNo;
+	MultipartFile [] prodImage;
+	public MultipartFile[] getProdImage() {
+		return prodImage;
+	}
+	public void setProdImage(MultipartFile[] prodImage) {
+		this.prodImage = prodImage;
+	}
 	public String getProdNo() {
 		return prodNo;
 	}
@@ -40,16 +45,5 @@ public class ProductDTO {
 	public void setProdInfo(String prodInfo) {
 		this.prodInfo = prodInfo;
 	}
-	public String getProdImage() {
-		return prodImage;
-	}
-	public void setProdImage(String prodImage) {
-		this.prodImage = prodImage;
-	}
-	public String getEmpNo() {
-		return empNo;
-	}
-	public void setEmpNo(String empNo) {
-		this.empNo = empNo;
-	}
+	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import model.CatDTO;
 import model.ProductDTO;
 
 public class ProductRepository {
@@ -12,8 +13,11 @@ public class ProductRepository {
 	SqlSession sqlSession;
 	private final String namespace = "mappers.productMapper";
 	private String statement;
-	
-	public List<ProductDTO> catList(){
+	public void prodInsert(ProductDTO dto) {
+		statement = namespace + ".prodInsert";
+		sqlSession.insert(statement, dto);
+	}
+	public List<CatDTO> catList(){
 		statement = namespace + ".catList";
 		return sqlSession.selectList(statement);
 	}
