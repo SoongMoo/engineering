@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +12,15 @@
 <form action="">
 <table border = 1>
 	<tr><th>상품번호</th>
-		<td><input type="text" name="prodNo"/></td></tr>
-	<tr><th>카테고리</th><td></td></tr>
+		<td><input type="text" name="prodNo" value="${autoNum }"/></td></tr>
+	<tr><th>카테고리</th>
+		<td>
+			<select >
+				<c:forEach items="${lists }" var="dto">
+					<option value="${dto.catNum }" >${dto.catName }</option> 
+				</c:forEach>
+			</select>		
+		</td></tr>
 	<tr><th>이름</th>
 		<td><input type="text" name="prodName" /></td></tr>
 	<tr><th>가격</th>

@@ -4,5 +4,8 @@
        xsi:schemaLocation="
        		http://www.springframework.org/schema/beans 
        		http://www.springframework.org/schema/beans/spring-beans.xsd">
-       	<bean class = "controller.prod.ProdController" />	
+       	<bean class = "controller.prod.ProdController" />
+       	<bean id ="productAutoNumService"
+       		class="service.product.ProductAutoNumService" />	
+		<bean class = "repository.ProductRepository" />
 </beans>
