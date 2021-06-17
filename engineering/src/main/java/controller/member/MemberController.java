@@ -144,6 +144,7 @@ public class MemberController {
 			@RequestParam(value="membPw")String membPw,
 			@RequestParam(value="newPw") String newPw,
 			@RequestParam(value="newPwCon") String newPwCon) {
+		System.out.println("v nsmx bvjhksA");
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		String userId = authInfo.getUserId();
 		String pw = authInfo.getUserPw();
