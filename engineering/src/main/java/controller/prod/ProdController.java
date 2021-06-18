@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import command.ProductCommand;
 import service.product.ProductAutoNumService;
+import service.product.ProductDeleteService;
 import service.product.ProductInfoService;
 import service.product.ProductJoinService;
 import service.product.ProductListService;
@@ -27,6 +28,14 @@ public class ProdController {
 	ProductInfoService productInfoService;
 	@Autowired
 	ProductModifyService productModifyService;
+	@Autowired
+	ProductDeleteService productDeleteService;
+	@RequestMapping("prodDel")
+	public String prodDel(@RequestParam(value="prodNo") String prodNo,
+			HttpSession session) {
+		productDeleteService.prodDel(prodNo,session);
+		return "redirect:prodList";
+	}
 	@RequestMapping(value="prodModifyOk", method = RequestMethod.POST)
 	public String prodModifyOk(ProductCommand productCommand) {
 		productModifyService.prodUpdate(productCommand);

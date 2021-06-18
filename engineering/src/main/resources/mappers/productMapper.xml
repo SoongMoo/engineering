@@ -14,9 +14,11 @@
 	set PROD_NAME = #{prodName}, PROD_PRICE = #{prodPrice} ,
 		PROD_INFO = #{prodInfo}
 	where PROD_NO = #{prodNo}
-	
 </update>
-
+<delete id="prodDelete" parameterType="string">
+	delete from product
+	where PROD_NO = #{prodNo}
+</delete>
 <select id="prodInfo" parameterType="String" resultType="model.ProductDTO">
 	select PROD_NO prodNo, CAT_NUM catNum, PROD_NAME prodName, 
 	       PROD_PRICE prodPrice ,PROD_INFO prodInfo,  PROD_IMAGE prodImage, 

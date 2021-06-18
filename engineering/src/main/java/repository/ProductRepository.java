@@ -13,6 +13,10 @@ public class ProductRepository {
 	SqlSession sqlSession;
 	private final String namespace = "mappers.productMapper";
 	private String statement;
+	public void prodDel(String prodNo) {
+		statement = namespace + ".prodDelete";
+		sqlSession.delete(statement, prodNo);
+	}
 	public void prodUpdate(ProductDTO dto) {
 		statement = namespace + ".prodUpdate";
 		sqlSession.update(statement, dto);

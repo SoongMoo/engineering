@@ -17,7 +17,7 @@
 		<mvc:jsp prefix="/WEB-INF/view/"/>
 		<mvc:jsp suffix=".jsp"/>
 	</mvc:view-resolvers>
-	<mvc:resources  location="/WEB-INF/view/" mapping="/**" cache-period="10000" />
+	<mvc:resources  location="/, classpath:/WEB-INF/view/" mapping="/**" cache-period="10000" />
 	<!-- 의존객체 자동 주입 -->
 	<context:annotation-config />
 	<bean id="bcryptPasswordEncoder"

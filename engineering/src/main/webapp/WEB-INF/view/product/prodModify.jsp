@@ -22,7 +22,8 @@
 		<td><textarea rows="6" cols="30" name="prodInfo">${dto.prodInfo }</textarea></td></tr>
 	<tr><th colspan="2">
 		<input type="submit" value="상품 수정"/>
-		<input type="button" value="상품 삭제"/>
+		<input type="button" value="상품 삭제" 
+			onclick="javascript:location.href='prodDel?prodNo=${dto.prodNo }'"/>
 		<input type="button" onclick="javascript:history.back();" 
 			value="리스트"/>
 		</th></tr> 
