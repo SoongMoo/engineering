@@ -13,6 +13,18 @@ public class ProductRepository {
 	SqlSession sqlSession;
 	private final String namespace = "mappers.productMapper";
 	private String statement;
+	public void prodUpdate(ProductDTO dto) {
+		statement = namespace + ".prodUpdate";
+		sqlSession.update(statement, dto);
+	}
+	public ProductDTO prodInfo(String prodNo) {
+		statement = namespace + ".prodInfo";
+		return sqlSession.selectOne(statement, prodNo);
+	}
+	public List<ProductDTO> prodList(){
+		statement = namespace + ".prodList";
+		return sqlSession.selectList(statement);
+	}
 	public void prodInsert(ProductDTO dto) {
 		statement = namespace + ".prodInsert";
 		sqlSession.insert(statement, dto);
