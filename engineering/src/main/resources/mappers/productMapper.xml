@@ -15,6 +15,12 @@
 		PROD_INFO = #{prodInfo}
 	where PROD_NO = #{prodNo}
 </update>
+
+<insert id="cartInsert" parameterType="model.CartDTO">
+	insert into cart (MEMB_ID,PROD_NO, CAT_NUM, CART_QTY,CART_PRICE  )
+	values(#{membId},#{prodNo},#{catNum},#{cartQty},#{cartPrice})
+</insert>
+ 
 <delete id="prodDelete" parameterType="string">
 	delete from product
 	where PROD_NO = #{prodNo}

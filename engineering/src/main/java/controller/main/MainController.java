@@ -11,14 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import service.main.LoginService;
+import service.product.ProductListService;
 
 @Controller
 public class MainController {
 	@Autowired
 	LoginService loginService;
+	@Autowired
+	ProductListService productListService;
 	@RequestMapping(value = "/main", method=RequestMethod.GET)
-	public String aaaa() {
-
+	public String aaaa(Model model) {
+		productListService.prodList(model);
 		return"main";
 	}
 	@RequestMapping(value="/login" ,method = RequestMethod.POST)
