@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import command.ProductCommand;
 import service.product.CartAddService;
+import service.product.CartListService;
 import service.product.ProductAutoNumService;
 import service.product.ProductDeleteService;
 import service.product.ProductInfoService;
@@ -40,7 +41,14 @@ public class ProdController {
 			@RequestParam(value="catNum") String catNum,
 			Model model, HttpSession session) {
 		cartAddService.cartAdd(prodNo, cartQty, prodPrice,catNum, session);
-		return null;
+		return "redirect:cartList";
+	}
+	@Autowired
+	CartListService cartListService;
+	@RequestMapping("cartList")
+	public String cartList(HttpSession session, Model model){
+		cartListService.cartList(session, model);
+		return "product/cartList";
 	}
 	@RequestMapping("prodInfo")
 	public String prodInfo(@RequestParam(value="prodNo") String prodNo,

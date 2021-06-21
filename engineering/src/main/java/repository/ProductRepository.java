@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import model.CartDTO;
 import model.CatDTO;
+import model.ProductCartDTO;
 import model.ProductDTO;
 
 public class ProductRepository {
@@ -14,6 +15,14 @@ public class ProductRepository {
 	SqlSession sqlSession;
 	private final String namespace = "mappers.productMapper";
 	private String statement;
+	public ProductCartDTO cartList(CartDTO dto) {
+		statement = namespace + ".cartList";
+		return sqlSession.selectOne(statement, dto);
+	}
+	public List<String> memCart(String membId) {
+		statement = namespace + ".memCart";
+		return sqlSession.selectList(statement, membId);
+	}
 	public void cartAdd(CartDTO dto) {
 		statement = namespace + ".cartInsert";
 		sqlSession.insert(statement, dto);
