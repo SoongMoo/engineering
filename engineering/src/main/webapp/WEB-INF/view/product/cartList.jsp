@@ -27,11 +27,11 @@
 		}else{
 			alert("최소구매 수량은 1이어야 합니다.");
 		}
-		
 	}
 </script>
 </head>
 <body>
+<form action="prodBuy" method="get" >
 <table width = "800" border="1">
 	<c:set var="total" value="0"/>
     <tr><td>이미지</td><td>상품명</td><td>수량</td><td>단가</td><td>적용금액</td></tr>
@@ -59,8 +59,10 @@
 			상품수 : <span id="prodCnt">${list.size() }</span><br />
 			전체 금액 : <span id="totalPrice">${total }</span><br />
 		</td></tr>
-	<tr><td colspan="5" align = "center"></td></tr>
+	<tr><td colspan="5" align = "center">
+			<input type="submit" value="구매하기"	/>
+		</td></tr>
 </table>
-
+</form>
 </body>
 </html>
