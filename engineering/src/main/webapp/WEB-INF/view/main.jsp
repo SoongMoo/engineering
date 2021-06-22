@@ -42,7 +42,8 @@
 </c:if>
 <c:if test="${authInfo.grade == 1 }">
 <!-- 사용자 로그인 -->
-	<a href="member/memMyPage">마이페이지</a> 
+	<a href="member/memMyPage">마이페이지</a>
+	<a href="prod/cartList">장바구니</a> 
 </c:if>
 <a href="logout">로그아웃</a>
 </c:if>

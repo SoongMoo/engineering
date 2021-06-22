@@ -15,6 +15,10 @@ public class ProductRepository {
 	SqlSession sqlSession;
 	private final String namespace = "mappers.productMapper";
 	private String statement;
+	public void cartQtyDown(CartDTO dto) {
+		statement = namespace + ".cartQtyDown";
+		sqlSession.update(statement, dto);
+	}
 	public ProductCartDTO cartList(CartDTO dto) {
 		statement = namespace + ".cartList";
 		return sqlSession.selectOne(statement, dto);

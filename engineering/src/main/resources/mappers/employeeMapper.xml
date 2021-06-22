@@ -23,7 +23,7 @@ HIRE_DATE hireDate,SALARY
 	set EMP_DEPT_NUMBER = #{empDeptNumber}, EMP_EMAIL= #{empEmail},
 	    EMP_PHONE_NUMBER = #{empPhoneNumber}, HIRE_DATE = #{hireDate},
 	    SALARY = #{salary}
-	where emp_no = #{empNo}	
+	where emp_no = #{empNo}
 </update>
 
 <insert id="employeeInsert" parameterType="emp">

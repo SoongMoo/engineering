@@ -30,5 +30,6 @@ public class CartListService {
 			ProductCartDTO productCartDTO = productRepository.cartList(dto); 
 			dtos.add(productCartDTO);
 		}
+		model.addAttribute("list", dtos);
 	}
 }

@@ -16,10 +16,17 @@
 	where PROD_NO = #{prodNo}
 </update>
 
+<update id="cartQtyDown" parameterType="model.ProductDTO">
+	update cart
+	set cart_Qty = cart_Qty - 1,
+		CART_PRICE = CART_PRICE - #{cartPrice}
+	where memb_id = #{membId} and prod_no = #{prodNo}
+</update>
+
 <select id="memCart" parameterType="string" resultType="string">
 	select prod_no from cart where memb_id = #{membId}
 </select>
-
+<!-- selectList를 사용할 수 없다. selectOne -->
 <resultMap type="model.ProductCartDTO" id="productCartMap">
 	<association property="productDTO" javaType="model.ProductDTO">
 		<result column="prod_name" jdbcType="VARCHAR" property="prodName"/>
