@@ -7,7 +7,7 @@
 select to_char(sysdate,'yyyymmdd') || 
        nvl2(max(pay_no), substr(max(pay_no),-6) ,100000) + 1
 from payment
-where substr(pay_date,1,8) = to_char(sysdate,'yyyymmdd')
+where to_char(pay_date,'yyyymmdd') = to_char(sysdate,'yyyymmdd')
 </sql>
 
 <insert id="payInsert" parameterType="model.PaymentDTO">
