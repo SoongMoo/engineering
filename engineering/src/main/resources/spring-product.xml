@@ -16,5 +16,6 @@
 		<bean class = "service.product.CartAddService" />
 		<bean class = "service.product.CartListService" />
 		<bean class = "service.product.CartQtyDownService" />
-		<bean class = "service.product.ProdBuyService" />		
+		<bean class = "service.product.ProdBuyService" />
+		<bean class = "service.product.GoodsOrderService" />
 </beans>

@@ -3,6 +3,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.productMapper">
 
+<delete id="cartProdDel" parameterType="model.CartDTO">
+	delete from cart
+	where memb_id = #{membId} and prod_no = #{prodNo}
+</delete>
+<insert id="purchListInsert" parameterType="model.CartDTO">
+	insert into purchase_list (PURCH_NO,PROD_NO,CAT_NUM,PURCH_QTY,PURCH_PRICE )
+	select #{purchNo} , PROD_NO, CAT_NUM, CART_QTY, CART_PRICE 
+	from cart
+	where MEMB_ID = #{membId} and PROD_NO = #{prodNo}
+</insert>
+
+<insert id="purchInsert" parameterType="model.PurchaseDTO">
+	insert into Purchase(PURCH_NO,PURCH_DATE, PURCH_TOTAL,PURCH_ADDR,
+	                     PURCH_RECEIVER,PURCH_PHONE_NUMBER,PURCH_MSG, MEMB_ID)
+	              values(#{purchNo},sysdate,#{purchTotal},#{purchAddr},
+	               #{purchReceiver},#{purchPhoneNumber},#{purchMsg},#{memId} )
+</insert>
+
+
 <insert id="prodInsert" parameterType="model.ProductDTO">
 	insert into product (PROD_NO,CAT_NUM,PROD_NAME,PROD_PRICE,
 						PROD_INFO,PROD_IMAGE,EMP_NO)

@@ -9,12 +9,25 @@ import model.CartDTO;
 import model.CatDTO;
 import model.ProductCartDTO;
 import model.ProductDTO;
+import model.PurchaseDTO;
 
 public class ProductRepository {
 	@Autowired
 	SqlSession sqlSession;
 	private final String namespace = "mappers.productMapper";
 	private String statement;
+	public void cartProdDel(CartDTO dto) {
+		statement = namespace + ".cartProdDel";
+		sqlSession.delete(statement, dto);
+	}
+	public void purchListInsert(CartDTO dto) {
+		statement = namespace + ".purchListInsert";
+		sqlSession.insert(statement, dto);
+	}
+	public void purchInsert(PurchaseDTO dto) {
+		statement = namespace + ".purchInsert";
+		sqlSession.insert(statement, dto);
+	}
 	public void cartQtyDown(CartDTO dto) {
 		statement = namespace + ".cartQtyDown";
 		sqlSession.update(statement, dto);

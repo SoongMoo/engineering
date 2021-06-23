@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import command.GoodsOrderCommand;
 import command.ProductCommand;
 import service.product.CartAddService;
 import service.product.CartListService;
 import service.product.CartQtyDownService;
+import service.product.GoodsOrderService;
 import service.product.ProdBuyService;
 import service.product.ProductAutoNumService;
 import service.product.ProductDeleteService;
@@ -40,6 +42,18 @@ public class ProdController {
 	CartQtyDownService cartQtyDownService;
 	@Autowired
 	ProdBuyService prodBuyService;
+	@Autowired
+	GoodsOrderService goodsOrderService;
+	@RequestMapping("goodsOrder")
+	public String goodsOrder(GoodsOrderCommand goodsOrderCommand,
+			HttpSession session) {
+		goodsOrderService.goodsOrder(goodsOrderCommand, session);
+		return "redirect:payment";
+	}
+	@RequestMapping("payment")
+	public String payment() {
+		return "product/payment";
+	}
 	@RequestMapping("prodBuy")
 	public String prodBuy(
 			@RequestParam(value="prodCk") String [] prodCk,
