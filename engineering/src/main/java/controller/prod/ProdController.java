@@ -75,12 +75,9 @@ public class ProdController {
 	@RequestMapping("goodsOrder")
 	public String goodsOrder(GoodsOrderCommand goodsOrderCommand,
 			HttpSession session) {
-		goodsOrderService.goodsOrder(goodsOrderCommand, session);
-		return "redirect:payment";
-	}
-	@RequestMapping("payment")
-	public String payment() {
-		return "product/payment";
+		String purchNo = goodsOrderService.goodsOrder(goodsOrderCommand, session);
+		return "redirect:paymentOk?purchNo="+purchNo+
+				               "&payPrice="+goodsOrderCommand.getPurchTotal();
 	}
 	@RequestMapping("prodBuy")
 	public String prodBuy(
