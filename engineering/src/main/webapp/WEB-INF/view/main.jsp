@@ -33,12 +33,12 @@
 </c:if>
 <c:if test="${!empty authInfo }">
 <c:if test="${authInfo.grade != 1 }">
-<!-- 관리자로 로그인 -->
-<a href="emp/empList">직원정보 리스트</a><br />
-<a href="member/memList">회원 정보리스트</a><br />
-<!-- 일반직원 로그인 -->
-	<a href="emp/empMyPage">직원마이페이지
-<a href="prod/prodList">상품 정보 리스트</a>
+<!-- 관리자 로그인 -->
+	<a href="emp/empList">직원정보 리스트</a><br />
+	<a href="member/memList">회원 정보리스트</a><br />
+	<a href="emp/empMyPage">직원마이페이지</a><br />
+	<a href="prod/prodList">상품 정보 리스트</a><br />
+	<a href="sales/salesList" >판매 현황</a>
 </c:if>
 <c:if test="${authInfo.grade == 1 }">
 <!-- 사용자 로그인 -->

@@ -21,7 +21,15 @@
 			<c:if test="${dto.payNo == null }">
 				<a href="paymentOk?purchNo=${dto.purchNo}&payPrice=${dto.purchTotal}">주문하기</a></c:if>
 			<c:if test="${dto.payNo != null }">주문완료<br />
-			<a href="goodsReview?purchNo=${dto.purchNo }&prodNo=${dto.prodNo}&prodName=${dto.prodName }">리뷰쓰기</a></c:if>	
+				<c:if test="${dto.reviewContent == null}">
+					<a href="goodsReview?purchNo=${dto.purchNo }
+										&prodNo=${dto.prodNo}
+										&prodName=${dto.prodName }">리뷰쓰기</a></c:if>
+				<c:if test="${dto.reviewContent != null}">
+					<a href="goodsReviewUpdate?purchNo=${dto.purchNo }
+										&prodNo=${dto.prodNo}
+										&prodName=${dto.prodName }">리뷰수정</a></c:if>
+			</c:if>	
 		</td></tr>
 	<tr><td>결제금액 : ${dto.purchTotal }</td></tr>
 </c:forEach>

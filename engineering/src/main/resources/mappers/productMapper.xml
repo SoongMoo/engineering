@@ -9,6 +9,28 @@
 			( select CAT_NUM from product where PROD_NO = #{prodNo} ))
 </insert>
 
+<select id="prodReviewSelect" parameterType="string" resultType="model.ProdReviewDTO">
+select p.memb_id membId, pl.purch_no purchNo, pl.prod_no prodNo, 
+	   review_content reviewContent, review_date reviewDate, purch_date purchDate
+from purchase p, purchase_list pl , review r 
+where p.purch_no = pl.purch_no
+  and pl.prod_no = r.prod_no
+  and pl.purch_no = r.purch_no
+  and r.prod_no = #{prodNo}
+</select>
+
+<select id="reviewSelect" parameterType="model.ReviewDTO" resultType="model.ReviewDTO">
+	select PURCH_NO purchNo, PROD_NO prodNo,  REVIEW_CONTENT reviewContent 
+	from review
+	where PURCH_NO = #{purchNo} and PROD_NO = #{prodNo}
+</select>
+
+<update id="reviewUpdate">
+	update review
+	set review_content = #{reviewContent}
+	where prod_no = #{prodNo} and purch_no = #{purchNo}
+</update>
+
 <sql id="payNo">
 select to_char(sysdate,'yyyymmdd') || 
        nvl2(max(pay_no), substr(max(pay_no),-6) ,100000) + 1
@@ -38,11 +60,13 @@ where to_char(pay_date,'yyyymmdd') = to_char(sysdate,'yyyymmdd')
 <select id="purchList" parameterType="string" resultType="model.PurchListDTO">
 select pr.prod_no prodNo , prod_name prodName, prod_image prodImage,  
        pu.purch_no purchNo, purch_date purchDate,PURCH_TOTAL purchTotal, 
-       PAY_NO payNo
-from   product pr , purchase_list pl , purchase pu, payment pa
+       PAY_NO payNo , REVIEW_CONTENT reviewContent
+from   product pr , purchase_list pl , purchase pu, payment pa, review r
 where pr.prod_no = pl.prod_no 
   and pl.purch_no = pu.purch_no 
   and pu.purch_no = pa.purch_no(+)
+  and pl.purch_no = r.purch_no(+)
+  and pl.prod_no = r.prod_no(+)
   and pu.memb_id = #{membId}
 </select>
 

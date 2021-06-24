@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import model.CartDTO;
 import model.CatDTO;
 import model.PaymentDTO;
+import model.ProdReviewDTO;
 import model.ProductCartDTO;
 import model.ProductDTO;
 import model.PurchListDTO;
@@ -19,6 +20,18 @@ public class ProductRepository {
 	SqlSession sqlSession;
 	private final String namespace = "mappers.productMapper";
 	private String statement;
+	public List<ProdReviewDTO> prodReview(String prodNo) {
+		statement = namespace + ".prodReviewSelect";
+		return sqlSession.selectList(statement, prodNo);
+	}
+	public ReviewDTO reviewSelect(ReviewDTO dto) { 
+		statement = namespace + ".reviewSelect";
+		return sqlSession.selectOne(statement, dto);
+	}
+	public void reviewUpdate(ReviewDTO dto){
+		statement = namespace + ".reviewUpdate";
+		sqlSession.update(statement, dto);
+	}
 	public void reviewWrite(ReviewDTO dto) {
 		statement = namespace + ".reviewInsert";
 		sqlSession.insert(statement, dto);

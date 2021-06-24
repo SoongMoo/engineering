@@ -24,6 +24,8 @@ import service.product.ProductJoinService;
 import service.product.ProductListService;
 import service.product.ProductModifyService;
 import service.product.PurchaseListService;
+import service.product.ReviewModifyService;
+import service.product.ReviewUpdateService;
 import service.product.ReviewWriteService;
 
 @Controller
@@ -53,6 +55,30 @@ public class ProdController {
 	PaymentService paymentService;
 	@Autowired
 	ReviewWriteService reviewWriteService;
+	@Autowired
+	ReviewModifyService reviewModifyService;
+	@Autowired
+	ReviewUpdateService reviewUpdateService;
+	/// 수정페이지 열기
+	@RequestMapping("goodsReviewUpdate")
+	public String goodsReviewUpdate(
+			@RequestParam(value="prodNo")String prodNo,
+			@RequestParam(value="purchNo")String purchNo,
+			@RequestParam(value="prodName")String prodName,
+			Model model) {
+		reviewUpdateService.reviewUpdate(prodNo, purchNo, prodName, model);
+		return "product/reviewUpdate";
+	}
+	/// 수정하기
+	@RequestMapping("goodsReviewUpdateOk")
+	public String goodsReviewUpdateOk(
+			@RequestParam(value="prodNo")String prodNo,
+			@RequestParam(value="purchNo")String purchNo,
+			@RequestParam(value="reviewContent")String reviewContent
+			) {
+		reviewModifyService.reviewUpdate(prodNo, purchNo, reviewContent);
+		return "redirect:purchCon";
+	}
 	@RequestMapping("reviewOk")
 	public String reviewOk(
 			@RequestParam(value="prodNo")String prodNo,
