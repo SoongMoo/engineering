@@ -24,6 +24,7 @@ import service.product.ProductJoinService;
 import service.product.ProductListService;
 import service.product.ProductModifyService;
 import service.product.PurchaseListService;
+import service.product.ReviewWriteService;
 
 @Controller
 @RequestMapping("prod")
@@ -50,6 +51,26 @@ public class ProdController {
 	PurchaseListService purchaseListService;
 	@Autowired
 	PaymentService paymentService;
+	@Autowired
+	ReviewWriteService reviewWriteService;
+	@RequestMapping("reviewOk")
+	public String reviewOk(
+			@RequestParam(value="prodNo")String prodNo,
+			@RequestParam(value="purchNo")String purchNo,
+			@RequestParam(value="reviewContent")String reviewContent) {
+		reviewWriteService.reviewWrite(prodNo, purchNo, reviewContent);
+		return "redirect:purchCon";
+	}
+	@RequestMapping("goodsReview")
+	public String goodsReview(
+			@RequestParam(value="purchNo")String purchNo,
+			@RequestParam(value="prodNo")String prodNo,
+			@RequestParam(value="prodName")String prodName,Model model) {
+		model.addAttribute("purchNo", purchNo);
+		model.addAttribute("prodNo", prodNo);
+		model.addAttribute("prodName", prodName);
+		return "product/prodReview";
+	}
 	@RequestMapping("doPayment")
 	public String doPayment(
 			@RequestParam(value="purchNo") String purchNo,

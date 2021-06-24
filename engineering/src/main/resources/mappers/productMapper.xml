@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.productMapper">
+<insert id="reviewInsert" parameterType="model.ReviewDTO">
+	insert into review(PURCH_NO, PROD_NO, REVIEW_DATE, REVIEW_CONTENT,
+					   CAT_NUM )
+	values(#{purchNo},#{prodNo},sysdate,#{reviewContent}, 
+			( select CAT_NUM from product where PROD_NO = #{prodNo} ))
+</insert>
 
 <sql id="payNo">
 select to_char(sysdate,'yyyymmdd') || 

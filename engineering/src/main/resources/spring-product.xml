@@ -20,6 +20,7 @@
 		<bean class = "service.product.GoodsOrderService" />
 		<bean class = "service.product.PurchaseListService" />
 		<bean class = "service.product.PaymentService" />
+		<bean class = "service.product.ReviewWriteService" />
 		
 		
 </beans>
