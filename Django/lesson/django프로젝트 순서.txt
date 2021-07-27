@@ -1,0 +1,14 @@
+1. python manage.py startapp [app명]
+2. models에 테이블에 들어갈 컬럼을 정의
+3. settings에 app을 등록
+4. python manage.py makemigrations
+5. python manage.py migrate
+6. db로 가서 테이블이 생성되었는지 확인
+7. app밑에 templates디렉터리 생성
+8. templates디렉터리  app이름의 디렉터리 생성
+9. urls.py복사
+
+
+게시판 
+게시판 + 로그인 : 회원관리
+게시판 + 파일upload : 자료실
